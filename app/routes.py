@@ -7,4 +7,4 @@ def index():#this is a functoin that will run when we go to said web page
 
 @app.route('/name')
 def name():
-    return "Hello Allison"
+    return render_template('name.html')
