@@ -1,5 +1,6 @@
 from app import app 
 from flask import render_template
+from app.forms import RegistrationForm
 
 @app.route('/') #this is part of the url 
 def index():#this is a functoin that will run when we go to said web page
@@ -8,3 +9,11 @@ def index():#this is a functoin that will run when we go to said web page
 @app.route('/name')
 def name():
     return render_template('name.html')
+
+@app.route('/register', methods =['GET','POST'])
+def register():
+    form = RegistrationForm()
+    if form.validate_on_submit():
+        print ("Form has been validated")
+
+    return render_template('register.html', form = form ) 
