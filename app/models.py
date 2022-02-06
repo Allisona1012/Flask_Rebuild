@@ -18,10 +18,10 @@ class User(db.Model,UserMixin):
         super().__init__(**kwargs)
         self.password = generate_password_hash(kwargs['password'])
         db.session.add(self)
-        db.session.commit(self)
-
-    def check_password(self, password):
-        return check_password_hash(self.password, password)
+        db.session.commit()
 
     def __repr__(self):
         return f"<User|{self.username}>"
+
+    def check_password(self, password):
+        return check_password_hash(self.password, password)
